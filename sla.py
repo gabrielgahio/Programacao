@@ -1,8 +1,4 @@
-# Instituo Federal Catarinense: Campus Blumenau
-# Matéria : Matemática Aplicada
-# Professor: Alexandre V dos Santos
-# Código desenvolvido por: Gustavo Luiz Stahnke, Gabriel Gahio, Anthony Zutter
-# Turma: 202 Info
+
 
 import numpy as np
 import matplotlib.pyplot as plt
