@@ -24,7 +24,7 @@ plt.plot(x2, y2)
 
 
 
-
+#ok
 
 
 
