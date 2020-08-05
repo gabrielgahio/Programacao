@@ -17,14 +17,14 @@ class Esporte(db.Model):
                 str(self.atleta) + " , " + str(self.nivel_de_dificuldade)
 
     def json(self):
-        return json.dumps({
+        return {
             "id": self.id,
             "nome": self.nome ,
             "modalidade": self.modalidade,
             "pais_favorito": self.pais_favorito,
-            "atleta:": self.atleta,
+            "atleta": self.atleta,
             "nivel_de_dificuldade": self.nivel_de_dificuldade,
-        })
+        }
 
 if __name__ == "__main__":
     # apagar o arquivo, se houver

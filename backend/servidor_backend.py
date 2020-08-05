@@ -8,10 +8,11 @@ def inicio():
 
 @app.route("/listar_modalidades")
 def listar_modalidades():
+
     esportes = db.session.query(Esporte).all()
-    esporte_em_json = [x.json() for x in esportes]
-    # fornecer a lista de esportes em formato json
-    return jsonify(esporte_em_json)
+    esporte_em_json = [Esporte.json() for Esporte in esportes]
+    
+    return (jsonify(esporte_em_json))
 
 app.run(debug=True)
 
