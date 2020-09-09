@@ -57,8 +57,9 @@ $(function() { // quando o documento estiver pronto/carregado
         mostrar_conteudo("conteudoInicial");
     });
 
-    $(document).on("click", "#btIncluirModalidade", function() {
+    $(document).on("click", "#btIncluirModalidade", function(e) {
         //pegar dados da tela
+        e.preventDefault();
         id = $("#campoId").val();
         nome = $("#campoNome").val();
         modalidade = $("#campoModalidade").val();
@@ -69,13 +70,15 @@ $(function() { // quando o documento estiver pronto/carregado
         // preparar dados no formato json
         var dados = JSON.stringify({ id: id, nome: nome, modalidade: modalidade, pais_favorito: pais_favorito, atleta: atleta, nivel_de_dificuldade: nivel_de_dificuldade });
         // fazer requisição para o back-end
+        console.log(dados);
+        
         $.ajax({
             url: 'http://localhost:5000/incluir_modalidades',
             type: 'POST',
             dataType: 'json', // os dados são recebidos no formato json
             contentType: 'application/json', // tipo dos dados enviados
             data: dados, // estes são os dados enviados
-            success: pessoaIncluida, // chama a função listar para processar o resultado
+            success: modaldiadeIncluida, // chama a função listar para processar o resultado
             error: erroAoIncluir
         });
 

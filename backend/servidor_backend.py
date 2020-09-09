@@ -15,18 +15,21 @@ def listar_modalidades():
     return (jsonify(esporte_em_json))
 
 
-@app.route("/incluir_modalidade", methods=['post'])
+@app.route("/incluir_modalidade", methods=['POST'])
 def incluir_modalidade():
-    resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
+    resposta = jsonify({"resultado":"ok","detalhes": "ok"})
     dados = request.get_json()
     try:   
         nova=Esporte(**dados)
         db.session.add(nova)
         db.session.commit()
-    except Exception as e:
-        resposta = jsonify({"resultado":"erro", "detalhes":str(e)})
-    resposta.headers.add("Access-Control-Allow-Origin", "*")
-    return resposta 
+        
+    except Exception as e: 
+        resposta = jsonify({"resultado":"erro","detalhes":str(e)})
+        
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+    
+    return resposta
 
 
 app.run(debug=True)
