@@ -1,4 +1,3 @@
-"Laryssa linda do meu coraçao"
 
 
 from config import *

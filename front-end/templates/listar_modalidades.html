@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="PT-BR">      
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,28 +12,117 @@
 </head>
 
 <body>
-    <h1 class="mt-3 text-center">Cadastro de Esportes</h1>
-
     <div class="container">
-        <table class="table table-striped table-hover" id="tableEsportes">
-            <thead>
-                <!-- Cabeçalhos da tabela -->
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Modalidade</th>
-                    <th scope="col">Pais_favorito</th>
-                    <th scope="col">Atleta</th>
-                    <th scope="col">Nivel_de_dificuldade</th>
-                </tr>
 
-            </thead>         
-            <tbody id="corpoTabelaEsportes">
-                <!-- Aqui entra os dados das pessoas dps pelo JS -->
-            </tbody>
-        -->            
-        </table>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
+
+            <img src="../img/esporte.jpg" height="60px" class="navbar-brand rounded-circle">
+                     <!-- Ai é foda kkk -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav mr-auto">
+                    <span class="navbar-text">Cadastro de Esportes</span>
+                    <a class="nav-item nav-link" href="" id="linkInicio">Início
+                        <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="" id="linkListarModalidades">Listar</a>
+                    <a class="nav-item nav-link" data-toggle="modal" 
+                        data-target="#modalIncluirModalidades" href="">Incluir</a>
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </nav>
+        
+        <div id="corpoDaPagina">
+
+            <div id="conteudoInicial" class="invisible">
+                Bem vindo ao cadastro de Esportes.
+            </div>
+
+            <div class="modal fade" id="modalIncluirModalidade" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir Esporte</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="campoId">ID</label>
+                                    <input type="text" class="form-control" id="campoId"
+                                        aria-describedby="IdHelp" placeholder="Id">
+                                    <small id="IdHelp" class="form-text text-muted">Informe o seu ID.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoNome">Nome</label>
+                                    <input type="text" class="form-control" id="campoNome"
+                                        aria-describedby="NomeHelp" placeholder="Nome">
+                                    <small id="NomeHelp" class="form-text text-muted">Informe seu Nome.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoModalidade">Modalidade</label>
+                                    <input type="text" class="form-control" id="campoModalidade"
+                                        aria-describedby="ModalidadeHelp" placeholder="Modalidade">
+                                    <small id="modalidadeHelp" class="form-text text-muted">Informe sua Modalidade.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoPais_favorito">País_Favorito</label>
+                                    <input type="text" class="form-control" id="campoPais_favorito"
+                                        aria-describedby="Pais_favoritoHelp" placeholder="Pais_favorito">
+                                    <small id="Pais_favoritoHelp" class="form-text text-muted">Informe seu Pais_favorito.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoAtleta">Atleta</label>
+                                    <input type="text" class="form-control" id="campoAtleta"
+                                        aria-describedby="AtletaHelp" placeholder="Atleta">
+                                    <small id="AtletaHelp" class="form-text text-muted">Informe seu Atleta.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoNivel_de_dificuldade">Nivel_de_dificuldade</label>
+                                    <input type="text" class="form-control" id="campoNivel_de_dificuldade"
+                                        aria-describedby="Nivel_de_dificuldadeHelp" placeholder="Nivel_de_dificuldade">
+                                    <small id="Nivel_de_dificuldadeHelp" class="form-text text-muted">Informe o Nivel_de_dificuldade.</small>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btIncluirModalidade" type="button" class="btn btn-primary">Incluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <table class="table invisible table-striped table-hover" id="tabelaEsportes">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Modalidade</th>
+                        <th scope="col">Pais_favorito</th>
+                        <th scope="col">Atleta</th>
+                        <th scope="col">Nivel_de_dificuldade</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaEsportes">
+                   
+                </tbody>
+            </table>
+
+        </div> 
     </div>
+
+
+
+
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
@@ -46,6 +134,7 @@
         crossorigin="anonymous"></script>
      <!-- código específico do front-end -->
      <script src="../js/meuscript.js"></script>
+     
 </body>
 
 </html>
