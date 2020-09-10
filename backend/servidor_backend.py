@@ -15,7 +15,7 @@ def listar_modalidades():
     return (jsonify(esporte_em_json))
 
 
-@app.route("/incluir_modalidade", methods=['POST'])
+@app.route("/incluir_modalidades", methods=['POST'])
 def incluir_modalidade():
     resposta = jsonify({"resultado":"ok","detalhes": "ok"})
     dados = request.get_json()
