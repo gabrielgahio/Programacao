@@ -117,5 +117,32 @@ $(function() { // quando o documento estiver pronto/carregado
 
     // a função abaixo é executada quando a página abre
     mostrar_conteudo("conteudoInicial");
+
+    $(document).on("click", ".excluir_modalidades", function() {
+        var componente_clicado = $(this).attr('id');
+        var nome_icone = "excluir_";
+        var id_modalidades = componente_clicado.substring(nome_icone.length);
+        $.ajax({
+            url: 'http://localhost:5000/excluir_modalidades/'+id_modalidades,
+            type: 'DELETE',
+            dataType: 'json',
+            success: modalidadesExcluida,
+            error: erroAoExcluir
+        });
+        function modalidadesExcluida (retorno) {
+            if (retorno.resultado == "ok") { 
+                $("#linha_" + id_modalidades).fadeOut(1000, function(){   
+                    alert("Modalidade removida com sucesso!");
+                });
+            } else {
+                alert(retorno.resultado + ":" + retorno.detalhes);
+            }
+        }
+        function erroAoExcluir (retorno) {
+            alert("ERRO: "+retorno.resultado + ":" + retorno.detalhes);
+        }
+    });    
+
 });
+
 
