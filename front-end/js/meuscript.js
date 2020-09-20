@@ -28,7 +28,12 @@ $(function() { // quando o documento estiver pronto/carregado
                 '<td>' + esp.pais_favorito + '</td>' +
                 '<td>' + esp.atleta + '</td>' +
                 '<td>' + esp.nivel_de_dificuldade + '</td>' +
+                '<td><a href=# id="excluir_' + esp.id + '" ' + 
+                  'class="excluir_modalidades"><img src="../img/excluir.png" '+
+                  'alt="Excluir Modalidades" title="Excluir Modalidades"></a>' + 
+                '</td>' + 
                 '</tr>';
+
                 console.log(lin);
                 // adiciona a linha no corpo da tabela
                 console.log(esp.nome,esp.atleta);
@@ -139,7 +144,7 @@ $(function() { // quando o documento estiver pronto/carregado
             }
         }
         function erroAoExcluir (retorno) {
-            alert("ERRO: "+retorno.resultado + ":" + retorno.detalhes);
+            alert("erro ao excluir dados, verifique o backend: ");
         }
     });    
 
