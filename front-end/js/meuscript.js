@@ -21,7 +21,7 @@ $(function() { // quando o documento estiver pronto/carregado
 
             // Percorre a lista
             for (esp of esportes) { //i vale a posição no vetor
-                lin = '<tr>' + 
+                lin = '<tr id="linha_'+esp.id+'">' + 
                 '<td>' + esp.id + '</td>' + 
                 '<td>' + esp.nome + '</td>' + 
                 '<td>' + esp.modalidade + '</td>' +
