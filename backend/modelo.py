@@ -24,6 +24,54 @@ class Esporte(db.Model):
             "atleta": self.atleta,
             "nivel_de_dificuldade": self.nivel_de_dificuldade,
         }
+class Campeonato(db.Model):
+    id = db.Column(db.Integer, primary_key=True) 
+    nome_campeonato = db.Column(db.String(254)) 
+    local = db.Column(db.String(254))
+
+    def __str__(self):
+        return F"{self.nome_campeonato} [{self.id}], local={self.local}"
+
+    def json(self):
+        return {
+            "id":self.id,
+            "nome_campeonato": self.nome_campeonato,
+            "local": self.local
+        }
+
+class CampeonatoRealizado(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.String(254))
+    ganhador = db.Column(db.String(254))
+
+    esporte_id = db.Column(db.Integer, db.ForeignKey(Esporte.id), nullable=False)
+    esporte = db.relationship("Esporte")
+    campeonato_id = db.Column(db.Integer, db.ForeignKey(Campeonato.id), nullable=False)
+    campeonato = db.relationship("Campeonato")
+
+    def __str__(self):
+        return F"{self.data}, {self.ganhador}, {self.esporte}, {self.campeonato}"
+
+    def json(self):
+        "id":self.id,
+        "data":self.data,
+        "ganhador":self.ganhador,
+        "esporte_id":self.esporte_id,
+        "esporte":self.esporte.json(),
+        "campeonato_id":self.campeonato_id,
+        "campeonato":self.campeonato.json()
+
+
+class Elenco(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    atleta = db.Column(db.String(254))
+    tecnico = db.Column(db.String(254))
+    aux_tecnico = db.Column(String(254))
+    medico = db.Column(String(254))
+    
+    esporte_id = bd.Column(db.Integer, db.ForgeingKey(Esporte.id))
+    esporte = db.relationship("Esporte")
+
 
 if __name__ == "__main__":
     # apagar o arquivo, se houver
