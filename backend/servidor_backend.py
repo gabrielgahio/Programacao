@@ -42,8 +42,27 @@ def excluir_modalidades(modalidades_id):
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta    
 
+@app.route("/listar_campeonatos_realizados")
+def listar_campeonatos_realizados():
+    campeonatos_realizados= db.session.query(CampeonatoRealizado).all()
+    lista_json = [x.json() for i in campeonatos_realizados]
+    resposta = jsonify(lista_json)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
 
-
+@app.route("/listar/string:classe>")
+def listar(classe):
+    dados = None
+    if classe == "CampeonatoRealizado":
+        dados = db.session.query(CampeonatoRealizado).all()
+    elif classe == "Esporte":
+        dados = db.session.query(Esporte).all() 
+    elif classe == "Campeonato":
+        dados = db.session.query(Campeonato).all()
+    lista_json = [x.json() for x in dados]
+    resposta = jsonify(lista_json)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
 
 
 app.run(debug=True)

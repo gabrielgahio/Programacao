@@ -53,15 +53,16 @@ class CampeonatoRealizado(db.Model):
         return F"{self.data}, {self.ganhador}, {self.esporte}, {self.campeonato}"
 
     def json(self):
-        "id":self.id,
-        "data":self.data,
-        "ganhador":self.ganhador,
-        "esporte_id":self.esporte_id,
-        "esporte":self.esporte.json(),
-        "campeonato_id":self.campeonato_id,
-        "campeonato":self.campeonato.json()
-
-
+        return {
+            "id":self.id,
+            "data":self.data,
+            "ganhador":self.ganhador,
+            "esporte_id":self.esporte_id,
+            "esporte":self.esporte.json(),
+            "campeonato_id":self.campeonato_id,
+            "campeonato":self.campeonato.json()
+        }
+"""
 class Elenco(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     atleta = db.Column(db.String(254))
@@ -72,7 +73,7 @@ class Elenco(db.Model):
     esporte_id = bd.Column(db.Integer, db.ForgeingKey(Esporte.id))
     esporte = db.relationship("Esporte")
 
-
+"""
 if __name__ == "__main__":
     # apagar o arquivo, se houver
     if os.path.exists(arquivobd):
@@ -80,13 +81,20 @@ if __name__ == "__main__":
 
     db.create_all()
 
-    p1= Esporte(nome="100 metros rasos", modalidade="Atletismo", pais_favorito="Jamaica", atleta="Usain Bolt", nivel_de_dificuldade="10")
+    p1= Esporte(nome="Futebol", modalidade="Futebol de Campo", pais_favorito="Seleção Brasileira", atleta="Neymar", nivel_de_dificuldade="10")
     p2= Esporte(nome="Arremesso de peso", modalidade = "Atletismo", pais_favorito="Brasil", atleta="Jorge", nivel_de_dificuldade="10" )
 
     db.session.add(p1)
     db.session.add(p2)
     db.session.commit()
     
-    print(p1.json())
-    print(p2.json())
+    brasileirao = Campeonato(nome_campeonato = "BRASILEIRAO", local = "BRASIL")
+    libertadores = Campeonato(nome_campeonato = "LIBERTADORES", local = "America do Sul")
+
+    e1 = CampeonatoRealizado(data= "20/05/2020 a 01/12/2020", ganhador = "Flamengo", esporte = p1) 
+
+    db.session.add(e1)
+    db.session.commit()
+    print(F"Cameponato realizado: {e1}")
+    print(F"Campeonato realizado em json: {e1.json()}")
     
