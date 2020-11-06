@@ -45,7 +45,7 @@ def excluir_modalidades(modalidades_id):
 @app.route("/listar_campeonatos_realizados")
 def listar_campeonatos_realizados():
     campeonatos_realizados= db.session.query(CampeonatoRealizado).all()
-    lista_json = [x.json() for i in campeonatos_realizados]
+    lista_json = [ x.json() for x in campeonatos_realizados ]
     resposta = jsonify(lista_json)
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
