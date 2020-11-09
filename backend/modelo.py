@@ -91,7 +91,8 @@ if __name__ == "__main__":
     brasileirao = Campeonato(nome_campeonato = "BRASILEIRAO", local = "BRASIL")
     libertadores = Campeonato(nome_campeonato = "LIBERTADORES", local = "America do Sul")
 
-    e1 = CampeonatoRealizado(data= "20/05/2020 a 01/12/2020", ganhador = "Flamengo", esporte = p1) 
+    e1 = CampeonatoRealizado(data= "20/05/2020 a 01/12/2020", ganhador = "Flamengo", 
+    esporte = p1, campeonato = brasileirao) 
 
     db.session.add(e1)
     db.session.commit()
