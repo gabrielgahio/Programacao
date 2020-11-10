@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
     db.create_all()
 
-    p1= Esporte(nome="Futebol", modalidade="Futebol de Campo", pais_favorito="Seleção Brasileira", atleta="Neymar", nivel_de_dificuldade="10")
+    p1= Esporte(nome="Futebol", modalidade="Futebol de Campo", pais_favorito="Selecao Brasileira", atleta="Neymar", nivel_de_dificuldade="10")
     p2= Esporte(nome="Arremesso de peso", modalidade = "Atletismo", pais_favorito="Brasil", atleta="Jorge", nivel_de_dificuldade="10" )
 
     db.session.add(p1)

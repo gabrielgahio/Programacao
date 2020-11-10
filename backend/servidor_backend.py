@@ -50,7 +50,7 @@ def listar_campeonatos_realizados():
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
-"""@app.route("/listar/string:classe>")
+@app.route("/listar/<string:classe>")
 def listar(classe):
     dados = None
     if classe == "CampeonatoRealizado":
@@ -64,6 +64,6 @@ def listar(classe):
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
-"""
+
 app.run(debug=True)
 
