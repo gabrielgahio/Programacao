@@ -63,16 +63,28 @@ class CampeonatoRealizado(db.Model):
             "campeonato":self.campeonato.json()
         }
 """
-class Elenco(db.Model):
+class Time(db.Model): 
+    id = db.Column(db.Integer, primary_key = True)
+    nome_time = db.Column(db.String(254))
+
+    def __str__(self): 
+        return F"{self.nome_time} [{self.id}]"
+
+    def json(self):
+        return {
+            "id":self.id,
+            "nome_time": self.nome_time,
+        }    
+
+class Jogador(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    atleta = db.Column(db.String(254))
-    tecnico = db.Column(db.String(254))
-    aux_tecnico = db.Column(String(254))
-    medico = db.Column(String(254))
+    nome_jogador = db.Column(db.String(254))
+    idade = db.Column(db.String(254))
+    time_atual = db.Column(String(254))
+
     
     esporte_id = bd.Column(db.Integer, db.ForgeingKey(Esporte.id))
     esporte = db.relationship("Esporte")
-
 """
 if __name__ == "__main__":
     # apagar o arquivo, se houver
