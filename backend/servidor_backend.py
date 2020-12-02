@@ -65,5 +65,17 @@ def listar(classe):
     return resposta
 
 
+@app.route("/incluir_campeonato_realizado", methods=['post'])
+def incluir_campeonato_realizado(): 
+    resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
+    dados = request.get_json()
+    try:
+        nova = CampeonatoRealizado(**dados)
+        db.session.add(nova)
+        db.session.commit()
+    except Exception as e:
+        resposta = jsonify({"resultado":"erro", "detalhes":str(e)})
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
 app.run(debug=True)
 

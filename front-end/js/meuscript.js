@@ -146,7 +146,48 @@ $(function() { // quando o documento estiver pronto/carregado
         function erroAoExcluir (retorno) {
             alert("erro ao excluir dados, verifique o backend: ");
         }
-    });    
+    });  
+    
+    function exibir_campeonatos_realizados() {
+        $.ajax({
+            url: 'http://localhost:5000/listar_campeonatos_realizados',
+            method: 'GET',
+            dataType: 'json', // os dados são recebidos no formato json
+            success: listar, // chama a função listar para processar o resultado
+            error: function(problema) {
+                alert("erro ao ler dados, verifique o backend: ");
+            }
+        });
+        function listar (campeonatos_realizados) {
+            $('#corpoTabelaCampeonatosRealizados').empty();
+            mostrar_conteudo("cadastroCampeonatosRealizados");
+
+            for (var i in campeonatos_realizados) {
+                lin = '<tr id="linha_campeonato_realizado_'+exames_realizados[i].id+'">' + 
+                '<td>' + campeonatos_realizados[i].data + '</td>' + 
+                '<td>' + campeonatos_realizados[i].ganhador + '</td>' + 
+
+                '<td>' + campeonatos_realizados[i].esporte.nome + '</td>' + 
+                '<td>' + campeonatos_realizados[i].esporte.modalidade + '</td>' + 
+                '<td>' + campeonatos_realizados[i].esporte.pais_favorito + '</td>' + 
+                '<td>' + campeonatos_realizados[i].esporte.atleta + '</td>' + 
+                '<td>' + campeonatos_realizados[i].esporte.nivel_de_dificuldade + '</td>' + 
+
+                '<td><a href=# id="excluir_campeonato_realizado_' + campeonatos_realizados[i].id + '" ' + 
+                    'class="excluir_campeonatos_realizado"><img src="img/excluir.png" '+
+                    'alt="Excluir Campeonato realizado" title="Excluir Campeonato realizado"></a>' + 
+                '</td>' + 
+                '</tr>';
+                $('#corpoTabelaCampeonatosRealizados').append(lin);
+
+
+            }
+        }
+    }
+
+    $(document).on("click", "#linkListarCampeonatosRealizados", function() {
+        exibir_campeonatos_realizados();
+    });
 
 });
 

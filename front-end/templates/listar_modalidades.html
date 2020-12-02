@@ -21,11 +21,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav mr-auto">
                     <span class="navbar-text">Cadastro de Esportes</span>
+
                     <a class="nav-item nav-link" href="" id="linkInicio">Início
                         <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="" id="linkListarModalidades">Listar</a>
-                    <a class="nav-item nav-link" data-toggle="modal" 
-                        data-target="#modalIncluirModalidades" href="">Incluir</a>    
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" 
+                        id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                        aria-haspopup="true" aria-expanded="false">
+                          Cadastros
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#" id="linkListarEsportes">Esportes</a>
+                            <a class="dropdown-item" href="#">Campeonatos</a> 
+                        </div>
+                    </li>
+
+                    <a class="nav-item nav-link" href="#" id="linkListarCampeoanatosRealizados">Campeonatos realizados</a>
+                    
+                      
                 </div>
             </div>
 
@@ -43,9 +57,7 @@
                 Bem vindo ao cadastro de Esportes.
             </div>
             <br>
-            <div> 
-                <p class="font-weight-bold">Aqui podemos incluir esportes de diferentes modalidades.</p>
-            </div>
+            
 
             <div class="modal fade" id="modalIncluirModalidades" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,6 +118,14 @@
                 </div>
             </div>
 
+            <div class="container" id="cadastroEsportes">
+                <h5>Cadastro de Esportes</h5>
+
+                <a class="nav-item nav-link" data-toggle="modal" 
+                data-target="#modalIncluirModalidades" href="#"><img src="../img/incluir.png" title="Incluir Esporte"></a>
+
+
+
              <table class="table invisible table-striped table-hover" id="tabelaEsportes">
                 <thead>
                     <tr>
@@ -126,6 +146,38 @@
 
         </div> 
     </div>
+    
+        <div class="container" id="cadastroCampeonatosRealizados">
+            <h5>Campeonatos Realizados</h5>
+    
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirCampeonatoRealizado" href="#">
+              <img src="../img/incluir.png" title="Incluir Esporte"></a>
+
+            <table class="table table-striped table-hover" id="tabelaCampeonatosRealizados"></table>
+                <thead>
+                    <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Ganhador</th>
+                        <!-- campos do esporte -->
+                        <th scope="col">Nome</th>
+                        <th scope="col">Modalidade</th>
+                        <th scope="col">Pais_favorito</th>
+                        <th scope="col">Atleta</th>
+                        <th scope="col">nivel_de_dificuldade</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaExamesRealizados">
+                    <!-- aqui serão exibidos os exames realizados -->
+                </tbody>
+            </table>
+        </div>
+
+    </div> <!-- fim da div corpo da página -->
+</div>
+
+
+
 
 
 
