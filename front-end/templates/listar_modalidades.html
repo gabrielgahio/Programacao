@@ -7,7 +7,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    
+    <style>
+        img{
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+    
     <title>Cadastro de Esportes</title>
 </head>
 
@@ -37,7 +44,7 @@
                         </div>
                     </li>
 
-                    <a class="nav-item nav-link" href="#" id="linkListarCampeoanatosRealizados">Campeonatos realizados</a>
+                    <a class="nav-item nav-link" href="#" id="linkListarCampeonatosRealizados">Campeonatos realizados</a>
                     
                       
                 </div>
@@ -119,6 +126,7 @@
             </div>
 
             <div class="container" id="cadastroEsportes">
+      
                 <h5>Cadastro de Esportes</h5>
 
                 <a class="nav-item nav-link" data-toggle="modal" 
@@ -154,7 +162,7 @@
             data-target="#modalIncluirCampeonatoRealizado" href="#">
               <img src="../img/incluir.png" title="Incluir Esporte"></a>
 
-            <table class="table table-striped table-hover" id="tabelaCampeonatosRealizados"></table>
+            <table class="table table-striped table-hover" id="tabelaCampeonatosRealizados">
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -167,9 +175,11 @@
                         <th scope="col">nivel_de_dificuldade</th>
                     </tr>
                 </thead>
-                <tbody id="corpoTabelaExamesRealizados">
-                    <!-- aqui serão exibidos os exames realizados -->
+                <tbody id="corpoTabelaCampeonatosRealizados">
+                    <!-- aqui serão exibidos os campeonatos realizados -->
                 </tbody>
+
+                
             </table>
         </div>
 
